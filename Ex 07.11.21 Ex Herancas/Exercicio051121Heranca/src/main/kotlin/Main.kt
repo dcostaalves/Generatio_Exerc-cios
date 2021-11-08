@@ -4,10 +4,12 @@ import kotlin.math.min
 open class Employee (var firstName:String, var lastName: String, var registration: Int, var age: Int,
                      var daysWorked:Int, var vacationDaysTaken: Int, var salary: Double, var yearsWorked: Int ){
 
+    //tempo até aposentar
     fun timeToRetirement(){
         var retirement = min(60-age,40-yearsWorked)
     }
 
+    //tempo ate fim de férias
     fun vacationTimeLeft(){
         var timeLeft = ((daysWorked/360) * (30-vacationDaysTaken))
     }
@@ -33,11 +35,15 @@ vacationDaysTaken,salary,yearsWorked){
 }
 
 class SalesManager (firstName: String,lastName: String,registration: Int,age: Int,
-                    daysWorked: Int,vacationDaysTaken: Int,salary: Double,yearsWorked: Int): Employee(firstName, lastName, registration, age, daysWorked,
-    vacationDaysTaken,salary,yearsWorked){
+                    daysWorked: Int,vacationDaysTaken: Int,salary: Double,yearsWorked: Int)
+                     : Employee(firstName, lastName, registration, age, daysWorked,
+                     vacationDaysTaken,salary,yearsWorked){
 
+    //val teamLis = hashMapof<Int, SalesRep>
     val teamLis = HashMap<Int, SalesRep>()
 
+    //fun addRepVendas(sales: SalesRep)
+    //  teamList.put(sales.registration, sales)
     fun cadastrar(sales: SalesRep){
         teamLis.put(sales.registration, sales)
     }
@@ -48,6 +54,16 @@ class SalesManager (firstName: String,lastName: String,registration: Int,age: In
         }
     }
 
+    //fun var allSales = 0.0
+    //  if(teamList.isEmpty()){ //.isEmpty verifica se a lista esta vazia
+    //      println("Não há representantes de vensdas na equipe")
+    //  }else{
+    //         for(item in temaList){
+    //              allSales+= item.value.sales
+    //          }
+    //    val allComission = 0.03*allSales
+    //  println("A comissão do Gerente= $allComission")
+    //  }
     fun calculateComission(){
         var allSales = 0.0
         var allComission = 0.0
